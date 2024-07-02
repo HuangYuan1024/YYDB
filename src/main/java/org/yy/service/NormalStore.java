@@ -242,14 +242,14 @@ public class NormalStore implements Store {
         }
     }
 
-    public void CompressIndexFile() {
+    public void CompressLogFile() {
         ArrayList<String> arrayList = new ArrayList<>();
         HashSet<String> hashSet = new HashSet<>();
 
         try (Scanner scanner = new Scanner(new File(this.genFilePath()))) {
+            // 按行读取
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                // 处理每一行
                 if (!hashSet.contains(line)) {
                     arrayList.add(line);
                     hashSet.add(line);
@@ -259,7 +259,6 @@ public class NormalStore implements Store {
                     }
                 }
             }
-            //arrayList.remove(arrayList.size() - 1);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -288,7 +287,7 @@ public class NormalStore implements Store {
         ClearDataBaseFile("YY-table");
 
         // 压缩日志文件
-        CompressIndexFile();
+        CompressLogFile();
 
         // 重写数据库文件
         try (FileWriter writer = new FileWriter("YY-table")) {

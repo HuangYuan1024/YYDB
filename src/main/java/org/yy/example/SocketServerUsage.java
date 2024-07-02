@@ -17,9 +17,11 @@ public class SocketServerUsage {
     public static void main(String[] args) {
         String host = "localhost";
         int port = 12345;
-        String dataDir = "data"+ File.separator;
+        String dataDir = "data" + File.separator;
         Store store = new NormalStore(dataDir);
         SocketServerController controller = new SocketServerController(host, port, store);
         controller.StartServer();
+
     }
+
 }

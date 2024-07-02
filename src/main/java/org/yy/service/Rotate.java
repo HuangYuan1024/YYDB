@@ -14,7 +14,7 @@ public class Rotate extends Thread {
         normalStore.ClearDataBaseFile("YY-table");
 
         // 压缩日志文件
-        normalStore.CompressIndexFile();
+        normalStore.CompressLogFile();
 
         // 重写数据库文件
         try (FileWriter writer = new FileWriter("YY-table")) {
