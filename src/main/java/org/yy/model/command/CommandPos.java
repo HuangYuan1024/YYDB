@@ -13,12 +13,14 @@ import lombok.Setter;
 @Setter
 @Getter
 public class CommandPos {
+    private int fileIndex;
     private int pos;
     private int len;
 
-    public CommandPos(int pos, int len) {
+    public CommandPos(int pos, int len, int fileIndex) {
         this.pos = pos;
         this.len = len;
+        this.fileIndex = fileIndex;
     }
 
     @Override

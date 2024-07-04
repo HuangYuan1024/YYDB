@@ -51,7 +51,7 @@ public class SocketServerController implements Controller {
     }
 
     @Override
-    public void ReDoLog() {
+    public void ReDoLog() throws IOException {
         store.ReDoLog();
     }
 

@@ -4,14 +4,22 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修正RedoLog功能&#10;2024年7月2日">
-      <change afterPath="$PROJECT_DIR$/data/Scratch.log" afterDir="false" />
+    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修改rotate功能&#10;2024年7月4日">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/YY-table" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Scratch.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/data/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/data/data.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.log1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.log2.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.log3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p.properties" beforeDir="false" afterPath="$PROJECT_DIR$/p.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketClientUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketClientUsage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketServerUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketServerUsage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/StoreUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/StoreUsage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/Rotate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,8 +126,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.SocketServerUsage" />
         <item itemvalue="应用程序.SocketClientUsage" />
+        <item itemvalue="应用程序.SocketServerUsage" />
         <item itemvalue="应用程序.StoreUsage" />
       </list>
     </recent_temporary>
@@ -314,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719871752878</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="修改rotate功能&#10;2024年7月4日">
+      <created>1720068720677</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1720068720677</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -381,7 +396,8 @@
     <MESSAGE value="移除撤消功能&#10;2024年6月30日" />
     <MESSAGE value="测试&#10;2024年7月1日" />
     <MESSAGE value="修正压缩算法&#10;2024年7月2日" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正压缩算法&#10;2024年7月2日" />
+    <MESSAGE value="修改rotate功能&#10;2024年7月4日" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改rotate功能&#10;2024年7月4日" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

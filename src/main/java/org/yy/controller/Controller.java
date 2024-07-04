@@ -7,6 +7,8 @@
  */
 package org.yy.controller;
 
+import java.io.IOException;
+
 public interface Controller {
     void Set(String key, String value);
 
@@ -14,7 +16,7 @@ public interface Controller {
 
     void Remove(String key);
 
-    void ReDoLog();
+    void ReDoLog() throws IOException;
 
     void StartServer();
 }
