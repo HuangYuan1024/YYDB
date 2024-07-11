@@ -17,6 +17,4 @@ public interface Store extends Closeable {
 
     void Remove(String key);
 
-    void ReDoLog() throws IOException;
-
 }

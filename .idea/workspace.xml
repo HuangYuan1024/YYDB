@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修改rotate功能&#10;2024年7月4日">
+    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日">
+      <change afterPath="$PROJECT_DIR$/data/redoLog.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Scratch.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.log1.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.log2.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.log3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/level0/data.log1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p.properties" beforeDir="false" afterPath="$PROJECT_DIR$/p.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketClientUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketClientUsage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketServerUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/SocketServerUsage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/StoreUsage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/example/StoreUsage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" afterDir="false" />
@@ -52,27 +47,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable&quot;: &quot;ALL&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ProgrammingLearning/Java_Learning/大二上/作业/1/gameFight&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.14871795&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.34969854&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
-    &quot;应用程序.SocketClientUsage.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.SocketServerUsage.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/ProgrammingLearning/Java_Learning/大二下/大作业/easy-1db",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.14871795",
+    "project.structure.side.proportion": "0.34969854",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
+    "应用程序.SocketClientUsage.executor": "Run",
+    "应用程序.SocketServerUsage.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ProgrammingLearning\Java_Learning\大二下\大作业\YYDB\data\level0" />
       <recent name="D:\ProgrammingLearning\Java_Learning\大二下\大作业\YYDB\data" />
     </key>
   </component>
@@ -329,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720068720677</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日">
+      <created>1720137144053</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1720137144053</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -397,7 +401,8 @@
     <MESSAGE value="测试&#10;2024年7月1日" />
     <MESSAGE value="修正压缩算法&#10;2024年7月2日" />
     <MESSAGE value="修改rotate功能&#10;2024年7月4日" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改rotate功能&#10;2024年7月4日" />
+    <MESSAGE value="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

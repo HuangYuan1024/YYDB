@@ -16,7 +16,5 @@ public interface Controller {
 
     void Remove(String key);
 
-    void ReDoLog() throws IOException;
-
     void StartServer();
 }

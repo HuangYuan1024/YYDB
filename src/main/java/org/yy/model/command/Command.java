@@ -9,4 +9,6 @@ package org.yy.model.command;
 
 public interface Command {
     String getKey();
+
+    String getValue();
 }

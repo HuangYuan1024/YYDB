@@ -51,11 +51,6 @@ public class SocketServerController implements Controller {
     }
 
     @Override
-    public void ReDoLog() throws IOException {
-        store.ReDoLog();
-    }
-
-    @Override
     public void StartServer() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             LoggerUtil.info(LOGGER, logFormat,"startServer","Server started, waiting for connections...");
