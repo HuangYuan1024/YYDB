@@ -19,4 +19,9 @@ public class RmCommand extends AbstractCommand {
         super(CommandTypeEnum.RM);
         this.key = key;
     }
+
+    @Override
+    public String getValue() {
+        return null;
+    }
 }

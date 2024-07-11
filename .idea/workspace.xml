@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日">
-      <change afterPath="$PROJECT_DIR$/data/redoLog.log" afterDir="false" />
+    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/level0/data.log1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p.properties" beforeDir="false" afterPath="$PROJECT_DIR$/p.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/controller/SocketServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/CommandPos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/RmCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/RmCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/Store.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +48,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/ProgrammingLearning/Java_Learning/大二下/大作业/easy-1db",
+    "last_opened_file_path": "D:/ProgrammingLearning/Java_Learning/大二下/大作业/easy-db-main-7月5日",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -73,7 +66,7 @@
       <recent name="D:\ProgrammingLearning\Java_Learning\大二下\大作业\YYDB\data" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.SocketServerUsage">
+  <component name="RunManager" selected="应用程序.SocketClientUsage">
     <configuration name="SocketClientUsage" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.yy.example.SocketClientUsage" />
       <module name="YYDB" />
@@ -333,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720137144053</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日">
+      <created>1720674386166</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1720674386166</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -402,7 +402,8 @@
     <MESSAGE value="修正压缩算法&#10;2024年7月2日" />
     <MESSAGE value="修改rotate功能&#10;2024年7月4日" />
     <MESSAGE value="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日" />
-    <option name="LAST_COMMIT_MESSAGE" value="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日" />
+    <MESSAGE value="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

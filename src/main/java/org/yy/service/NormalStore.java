@@ -343,7 +343,7 @@ public class NormalStore implements Store {
     @Override
     public void close() {}
 
-    public void CreateNewDirectory(int level) {
+    public void CreateNewDirectory(int level) throws IOException {
         // 指定要检查的目录路径
         String directoryPath = this.dataDir + File.separator + LEVEL + level;
 
@@ -354,6 +354,8 @@ public class NormalStore implements Store {
         if (!directory.exists()) {
             // 不存在就创建目录
             File dir = new File(directoryPath);
+
+            setNumberOfLevels(level);
 
             // 尝试创建目录
             boolean success = dir.mkdir();
