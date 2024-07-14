@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/model/command/RmCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/model/command/RmCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable": "ALL",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/ProgrammingLearning/Java_Learning/大二下/大作业/easy-db-main-7月5日",
+    "last_opened_file_path": "D:/ProgrammingLearning/Java_Learning/大二下/大作业/easy-db-main-7月11日",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -333,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720674386166</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日">
+      <created>1720680094083</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1720680094083</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

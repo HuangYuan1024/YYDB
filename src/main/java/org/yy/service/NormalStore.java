@@ -230,8 +230,8 @@ public class NormalStore implements Store {
             // 加锁
             indexLock.writeLock().lock();
             // redoLog
-            RandomAccessFileUtil.writeInt(dataDir + File.separator + NAME + TABLE, commandBytes.length);
-            int posReDoLog = RandomAccessFileUtil.write(dataDir + File.separator + NAME + TABLE, commandBytes);
+            RandomAccessFileUtil.writeInt(getRedologFilePath(), commandBytes.length);
+            RandomAccessFileUtil.write(getRedologFilePath(), commandBytes);
             // 先写内存表，内存表达到一定阀值再写进磁盘
             // 保存到memTable
             memTable.put(key, command);
