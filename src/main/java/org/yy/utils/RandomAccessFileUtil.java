@@ -54,7 +54,9 @@ public class RandomAccessFileUtil {
             e.printStackTrace();
         } finally {
             try {
-                file.close();
+                if (file != null) {
+                    file.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

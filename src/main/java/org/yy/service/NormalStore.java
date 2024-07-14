@@ -95,9 +95,7 @@ public class NormalStore implements Store {
     }
 
     public String getNewFilePath() throws IOException {
-        int LEVEL = getNumberOfLevels();
         File file = new File(getFilePath(0));
-
         return file.getAbsolutePath() + getNumberOfFiles(0);
     }
 
@@ -172,6 +170,7 @@ public class NormalStore implements Store {
                 start += cmdLen;
             }
             file.seek(file.length());
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -216,10 +215,41 @@ public class NormalStore implements Store {
                 start += cmdLen;
             }
             file.seek(file.length());
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         LoggerUtil.debug(LOGGER, logFormat, "reload index: "+index.toString());
+    }
+
+    public void reloadRedoLog() {
+        try {
+            RandomAccessFile file = new RandomAccessFile(getRedologFilePath(), RW_MODE);
+            long len = file.length();
+            long start = 0;
+            file.seek(start);
+            while (start < len) {
+                int cmdLen = file.readInt();
+                byte[] bytes = new byte[cmdLen];
+                file.read(bytes);
+                JSONObject value = JSON.parseObject(new String(bytes, StandardCharsets.UTF_8));
+                Command command = CommandUtil.jsonToCommand(value);
+                start += 4;
+                if (command != null) {
+                    CommandPos cmdPos = new CommandPos((int) start, cmdLen, 0, 0);
+                    index.put(command.getKey(), cmdPos);
+                    // 如果日志中记载该键值是被删除的，就将其从索引里删去
+                    if (command.getClass().equals(RmCommand.class)) {
+                        index.remove(command.getKey(), cmdPos);
+                    }
+                }
+                start += cmdLen;
+            }
+            file.seek(file.length());
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -236,35 +266,9 @@ public class NormalStore implements Store {
             // 保存到memTable
             memTable.put(key, command);
             if (memTable.size() > storeThreshold) {
-                for (String i :
-                     memTable.keySet()) {
-                    Command cmd = memTable.get(i);
-                    String keyMem = cmd.getKey();
-                    String valueMem = cmd.getValue();
-
-                    byte[] cmdBytes;
-                    if (valueMem != null) {
-                        SetCommand setCommand = new SetCommand(keyMem, valueMem);
-                        cmdBytes = setCommand.toByte();
-                    } else {
-                        RmCommand rmCommand = new RmCommand(keyMem);
-                        cmdBytes = rmCommand.toByte();
-                    }
-
-                    RandomAccessFileUtil.writeInt(dataDir + File.separator + NAME + TABLE, cmdBytes.length);
-                    int pos = RandomAccessFileUtil.write(dataDir + File.separator + NAME + TABLE, cmdBytes);
-                    if (valueMem != null) {
-                        // 添加索引
-                        CommandPos cmdPos = new CommandPos(pos, cmdBytes.length, getNumberOfLevels(), getNumberOfFiles(getNumberOfLevels()));
-                        index.put(key, cmdPos);
-                    } else {
-                        // 删除索引
-                        index.remove(key);
-                    }
-                }
+                // rotate
+                RotateDataBaseFile();
             }
-            // rotate
-            RotateDataBaseFile();
         } catch (Throwable t) {
             throw new RuntimeException(t);
         } finally {
@@ -275,17 +279,17 @@ public class NormalStore implements Store {
     @Override
     public String Get(String key) {
         try {
+            // 加锁
             indexLock.readLock().lock();
 
-            // rotate
-            RotateDataBaseFile();
+            // 加载索引
+            reloadRedoLog();
 
             // 从索引中获取信息
             CommandPos cmdPos = index.get(key);
             if (cmdPos == null) {
                 return null;
             }
-
             String fileIndex = String.valueOf(cmdPos.getFileIndex());
             int levelIndex = Integer.parseInt(String.valueOf(cmdPos.getLevelIndex()));
             byte[] commandBytes;
@@ -331,8 +335,11 @@ public class NormalStore implements Store {
             // 保存到memTable
             memTable.put(key, command);
             if (memTable.size() > storeThreshold) {
+                // rotate
                 RotateDataBaseFile();
             }
+            // 去除索引
+            index.remove(key);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         } finally {
@@ -384,12 +391,12 @@ public class NormalStore implements Store {
                 // 如果level0目录中的文件即将超过3个就开始合并SSTable
                 if (getNumberOfFiles(0) < 3) {
                     // 创建新文件（空的新文件）
-                    ClearDataBaseFile(getFilePath(0) + getNumberOfFiles(0) + 1);
+                    ClearDataBaseFile(getFilePath(0) + (getNumberOfFiles(0) + 1));
                 } else {
                     // 判断是否需要合并SSTable
                     DetermineMerge();
                     // 创建新文件（空的新文件）
-                    ClearDataBaseFile(getFilePath(0) + getNumberOfFiles(0) + 1);
+                    ClearDataBaseFile(getFilePath(0) + (getNumberOfFiles(0) + 1));
                 }
             }
 
@@ -419,14 +426,20 @@ public class NormalStore implements Store {
                 // 删除索引
                 index.remove(keyMem);
             }
+
+            // 重新读取索引
+            reloadIndex();
         }
 
         // 清空内存表
-        memTable.clear();
+        if (memTable.size() != 0)
+            memTable.clear();
+        // 清空redoLog
+        ClearDataBaseFile(getRedologFilePath());
     }
 
     public void DetermineMerge() throws IOException {
-        for (int i = 0; i < getNumberOfLevels(); i++) {
+        for (int i = 0; i <= getNumberOfLevels(); i++) {
             if (getNumberOfFiles(i) >= 3) {
                 String filePath1 = getFilePath(i) + 1;
                 String filePath2 = getFilePath(i) + 2;
@@ -442,29 +455,52 @@ public class NormalStore implements Store {
     }
 
     // 合并
-    public void MergeSSTable(String filePath1, String filePath2, String filePath3, int level) {
+    public void MergeSSTable(String filePath1, String filePath2, String filePath3, int level) throws IOException {
         ArrayList<byte[]> data = new ArrayList<>();
-        HashSet<String> keys = new HashSet<>();
+        Hashtable<String, Integer> keys = new Hashtable<String, Integer>();
 
         // 文件数据去重
         RemoveDuplicateData(filePath1, data, keys);
         RemoveDuplicateData(filePath2, data, keys);
         RemoveDuplicateData(filePath3, data, keys);
 
-        String newFilePath = getFilePath(level) + getNumberOfFiles(level) + 1;
+        // 删除文件
+        DeleteFile(filePath1);
+        DeleteFile(filePath2);
+        DeleteFile(filePath3);
 
-        // 创建新文件（空的新文件）
-        ClearDataBaseFile(newFilePath);
+        if (getNumberOfFiles(level) > 0) {
+            File file = new File(getFilePath(level) + getNumberOfFiles(level));
+            if (file.length() > getMaxFileLenth()) {
+                String newFilePath = getFilePath(level) + (getNumberOfFiles(level) + 1);
+                // 创建新文件（空的新文件）
+                ClearDataBaseFile(newFilePath);
+            }
+        }
 
         // 往新文件里写数据
         for (byte[] line :
              data) {
-            RandomAccessFileUtil.write(newFilePath, line);
+            JSONObject jsonObject = JSON.parseObject(new String(line, StandardCharsets.UTF_8));
+            Command command = CommandUtil.jsonToCommand(jsonObject);
+
+            String key = null;
+            String value = null;
+            if (command != null) {
+                key = command.getKey();
+                value = command.getValue();
+            }
+
+            SetCommand setCommand = new SetCommand(key, value);
+            byte[] commandBytes = setCommand.toByte();
+
+            RandomAccessFileUtil.writeInt(getFilePath(level) + getNumberOfFiles(level), commandBytes.length);
+            RandomAccessFileUtil.write(getFilePath(level) + getNumberOfFiles(level), line);
         }
     }
 
     // 去重
-    public void RemoveDuplicateData(String filePath, ArrayList<byte[]> data, HashSet<String> keys) {
+    public void RemoveDuplicateData(String filePath, ArrayList<byte[]> data, Hashtable<String, Integer> keys) {
         try {
             RandomAccessFile file = new RandomAccessFile(filePath, RW_MODE);
             long len = file.length();
@@ -483,21 +519,23 @@ public class NormalStore implements Store {
                         continue;
                     } else {
                         String key = command.getKey();
-                        // 如果键不重复，就添加数据
-                        if (!keys.contains(key)) {
+                        if (keys.get(key) == null) {
+                            // 如果键不重复，就添加数据，并记录下标
+                            keys.put(key, data.size());
                             data.add(bytes);
+                        } else {
+                            // 如果键重复，就修改对应下标的内容
+                            data.set(keys.get(key), bytes);
                         }
                     }
                 }
                 start += cmdLen;
             }
-            file.seek(file.length());
+            file.seek(len);
+            file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // 删除文件
-        DeleteFile(filePath);
     }
 
     public void DeleteFile(String filePath) {
