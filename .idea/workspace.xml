@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修改set的redolog调用&#10;2024年7月14日">
+    <list default="true" id="0a865355-87c6-4908-85fe-a9bd33f9b7d9" name="更改" comment="修复memTable未到阈值就进行rotate操作的bug&#10;修复rotate功能创建多余文件的bug&#10;修复rotate功能无法删除文件的bug&#10;修复去重功能无法正常去重的bug&#10;修复合并功能的写文件bug&#10;修复了set功能无法写入redoLog日志文件的bug&#10;完善了get功能&#10;完善了remove功能&#10;完善了redoLog功能&#10;2024年7月14日">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/level0/data.log1" beforeDir="false" afterPath="$PROJECT_DIR$/data/level0/data.log1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/redoLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/redoLog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p.properties" beforeDir="false" afterPath="$PROJECT_DIR$/p.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/example/StoreUsage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/service/NormalStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/yy/utils/RandomAccessFileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yy/utils/RandomAccessFileUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +66,7 @@
       <recent name="D:\ProgrammingLearning\Java_Learning\大二下\大作业\YYDB\data" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.SocketClientUsage">
+  <component name="RunManager" selected="应用程序.SocketServerUsage">
     <configuration name="SocketClientUsage" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.yy.example.SocketClientUsage" />
       <module name="YYDB" />
@@ -351,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1720953004157</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="修复memTable未到阈值就进行rotate操作的bug&#10;修复rotate功能创建多余文件的bug&#10;修复rotate功能无法删除文件的bug&#10;修复去重功能无法正常去重的bug&#10;修复合并功能的写文件bug&#10;修复了set功能无法写入redoLog日志文件的bug&#10;完善了get功能&#10;完善了remove功能&#10;完善了redoLog功能&#10;2024年7月14日">
+      <created>1720972472487</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1720972472487</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -422,7 +425,8 @@
     <MESSAGE value="修正rotate功能&#10;修改reloadIndex方法&#10;修改Get方法&#10;修改索引属性&#10;2024年7月5日" />
     <MESSAGE value="增加缓存功能&#10;增加LSMT&#10;增加去重功能&#10;增加合并功能&#10;修改SSTable结构&#10;修改索引加载功能&#10;2024年7月11日" />
     <MESSAGE value="修改set的redolog调用&#10;2024年7月14日" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改set的redolog调用&#10;2024年7月14日" />
+    <MESSAGE value="修复memTable未到阈值就进行rotate操作的bug&#10;修复rotate功能创建多余文件的bug&#10;修复rotate功能无法删除文件的bug&#10;修复去重功能无法正常去重的bug&#10;修复合并功能的写文件bug&#10;修复了set功能无法写入redoLog日志文件的bug&#10;完善了get功能&#10;完善了remove功能&#10;完善了redoLog功能&#10;2024年7月14日" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复memTable未到阈值就进行rotate操作的bug&#10;修复rotate功能创建多余文件的bug&#10;修复rotate功能无法删除文件的bug&#10;修复去重功能无法正常去重的bug&#10;修复合并功能的写文件bug&#10;修复了set功能无法写入redoLog日志文件的bug&#10;完善了get功能&#10;完善了remove功能&#10;完善了redoLog功能&#10;2024年7月14日" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

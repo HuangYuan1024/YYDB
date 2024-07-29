@@ -190,7 +190,6 @@ public class NormalStore implements Store {
             }
         }
     }
-
     public void reloadFile(String filePath, int levelIndex, int fileIndex) {
         try {
             RandomAccessFile file = new RandomAccessFile(filePath, RW_MODE);
