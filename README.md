@@ -1,6 +1,7 @@
-# YYDB-基于Java的简单NoSQL实现demo
+# YYDB-基于Java的简单NoSQL数据库实现demo
 
 ---
 
 作者：黄愿，钟郅懿
 
+简介：这个是我们大二时Java课程期末大作业考核时做的一个小数据库
